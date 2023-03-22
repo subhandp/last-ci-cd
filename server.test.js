@@ -2,6 +2,12 @@ const app = require('./server') // Link to your server file
 const supertest = require('supertest')
 const request = supertest(app)
 
+it('Call the /last endpoint', async done => {
+    const res = await request.get('/last')
+    expect(res.status).toBe(200)
+    expect(res.text).toBe('last!')
+    done()
+})
 
 it('Call the /youtube endpoint', async done => {
     const res = await request.get('/youtube')
